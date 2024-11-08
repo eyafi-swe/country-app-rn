@@ -1,9 +1,13 @@
 import React, { FC, useState } from 'react';
-import { FlatList, Text, View } from 'react-native';
+import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import styles from './Styles';
-import { FloatingPlusButton } from '../../components';
+import { DeleteIcon, FloatingPlusButton } from '../../components';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { HomeStackParamList } from '../../types/stackTypes';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { CustomCountryItem } from '../../types';
+import { removeCountry } from '../../redux/slices/customCountrySlice';
 
 type CustomCountryListScreenNavigationProp = NativeStackNavigationProp<HomeStackParamList, 'CustomCountryList'>;
 
@@ -12,12 +16,33 @@ interface CustomCountryListProps {
 }
 
 const CustomCountryList: FC<CustomCountryListProps> = ({ navigation }) => {
+    const { countries } = useSelector((state: RootState) => state.customCountry);
+    const dispatch = useDispatch();
 
     const navigateToGeneralInfo = () => navigation.navigate('GeneralInfo');
+
+    const deleteCountry = (name: string) => {
+        dispatch(removeCountry(name));
+    }
+
+    const renderCountry = ({ item }: { item: CustomCountryItem }) => (
+        <View style={styles.countryContainer}>
+            <Text style={styles.countryText}>{item.name}</Text>
+            <TouchableOpacity onPress={() => deleteCountry(item.name)}>
+                <DeleteIcon />
+            </TouchableOpacity>
+        </View>
+    );
 
     return (
         <View style={styles.parent}>
             <Text style={styles.title}>Your Custom Countries</Text>
+            <FlatList
+                data={countries}
+                keyExtractor={item => item.name}
+                renderItem={renderCountry}
+                style={styles.flatList}
+            />
             <FloatingPlusButton onPress={navigateToGeneralInfo} />
         </View>
     );

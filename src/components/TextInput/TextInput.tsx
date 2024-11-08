@@ -5,6 +5,7 @@ import Colors from '../../constants/Colors';
 interface TextInputProps {
     label: string;
     value: string;
+    type?: 'nummeric' | 'default';
     onChangeText: (text: string) => void;
     style?: StyleProp<ViewStyle>;
     inputStyle?: StyleProp<ViewStyle>;
@@ -13,6 +14,7 @@ interface TextInputProps {
 const TextInputComponent: FC<TextInputProps> = ({
     label,
     value,
+    type,
     onChangeText,
     style,
     inputStyle,
@@ -22,6 +24,7 @@ const TextInputComponent: FC<TextInputProps> = ({
             <Text>{label}</Text>
             <TextInput
                 value={value}
+                keyboardType={type == 'nummeric' ? 'numeric' : 'default'}
                 onChangeText={text => onChangeText(text)}
                 style={[inputStyle, styles.input]}
             />

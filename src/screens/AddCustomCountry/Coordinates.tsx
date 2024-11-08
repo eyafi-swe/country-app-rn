@@ -4,6 +4,9 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { ButtonPrimary, TextInput } from '../../components';
 import { HomeStackParamList } from '../../types/stackTypes';
 import styles from './Styles';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { setAddableCountryLat, setAddableCountryLng } from '../../redux/slices/customCountrySlice';
 
 type CoordinatesScreenNavigationProp = NativeStackNavigationProp<HomeStackParamList, 'Coordinates'>;
 
@@ -14,6 +17,8 @@ interface CoordinatesScreenProps {
 const Coordinates: FC<CoordinatesScreenProps> = ({ navigation }) => {
     const [longitude, setLongitude] = useState<string>('');
     const [latitude, setLatitude] = useState<string>('');
+    const { addableCountryLat, addableCountryLng } = useSelector((state: RootState) => state.customCountry);
+    const dispatch = useDispatch();
 
     const goBack = () => navigation.goBack();
     const navigateToPopulation = () => navigation.navigate('Population');
@@ -24,13 +29,15 @@ const Coordinates: FC<CoordinatesScreenProps> = ({ navigation }) => {
             <View>
                 <TextInput
                     label='Longitude'
-                    value={longitude}
-                    onChangeText={setLongitude}
+                    value={addableCountryLng.toString()}
+                    type='nummeric'
+                    onChangeText={text => dispatch(setAddableCountryLng(Number(text)))}
                 />
                 <TextInput
                     label='Latitude'
-                    value={latitude}
-                    onChangeText={setLatitude}
+                    value={addableCountryLat.toString()}
+                    type='nummeric'
+                    onChangeText={text => dispatch(setAddableCountryLat(Number(text)))}
                     style={{ marginTop: 20 }}
                 />
             </View>

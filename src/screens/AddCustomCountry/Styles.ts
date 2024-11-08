@@ -21,7 +21,15 @@ const styles = StyleSheet.create({
     },
     groupedButton: {
         width: '48%',
-    }
+    },
+    summaryContainer: {
+        justifyContent: 'center',
+        gap: 10,
+    },
+    summaryText: {
+        fontSize: 18,
+    },
+
 
 });
 

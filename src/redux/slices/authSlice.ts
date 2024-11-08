@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface AuthState {
-
     userEmail: string | null;
     isLoggedIn: boolean;
 }

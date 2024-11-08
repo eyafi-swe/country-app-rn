@@ -4,6 +4,9 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { ButtonPrimary, TextInput } from '../../components';
 import { HomeStackParamList } from '../../types/stackTypes';
 import styles from './Styles';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { setAddableCountryPopulation } from '../../redux/slices/customCountrySlice';
 
 type PopulationScreenNavigationProp = NativeStackNavigationProp<HomeStackParamList, 'Population'>;
 
@@ -13,6 +16,8 @@ interface PopulationScreenProps {
 
 const Population: FC<PopulationScreenProps> = ({ navigation }) => {
     const [population, setPopulation] = useState<string>('');
+    const { addableCountryPopulation } = useSelector((state: RootState) => state.customCountry);
+    const dispatch = useDispatch();
 
     const goBack = () => navigation.goBack();
     const navigateToSummary = () => navigation.navigate('Summary');
@@ -22,8 +27,9 @@ const Population: FC<PopulationScreenProps> = ({ navigation }) => {
             <Text style={styles.title}>Population</Text>
             <TextInput
                 label='Population'
-                value={population}
-                onChangeText={setPopulation}
+                value={addableCountryPopulation.toString()}
+                type='nummeric'
+                onChangeText={text => dispatch(setAddableCountryPopulation(Number(text)))}
             />
 
             <View style={styles.bottomButtonsParent}>
