@@ -3,9 +3,8 @@ import { FlatList, Text, View } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import styles, { pickerSelectStyles } from './Styles';
 import { currencyData } from '../../constants/CurrencyCodes';
-import ButtonPrimary from '../../components/button/ButtonPrimary';
 import useFetch from '../../hook/useFetch';
-import CardPrimary from '../../components/card/CardPrimary';
+import { ButtonPrimary, CardPrimary } from '../../components';
 
 const CountryByCurrency = () => {
     const [currencyCode, setCurrencyCode] = useState<string>('');

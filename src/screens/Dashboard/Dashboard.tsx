@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { View, Text } from 'react-native';
 import styles from './Styles';
-import ButtonPrimary from '../../components/button/ButtonPrimary';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { HomeStackParamList } from '../../types/stackTypes';
+import { ButtonPrimary } from '../../components';
 
 type DashboardScreenNavigationProp = NativeStackNavigationProp<HomeStackParamList, 'Dashboard'>;
 interface DashboardProps {
@@ -12,12 +12,8 @@ interface DashboardProps {
 
 const Dashboard: FC<DashboardProps> = ({ navigation }) => {
 
-    const handleOnPressExplore = () => {
-        navigation.navigate('CountryByCurrency')
-    }
-
-    const handleOnPressCustomCountries = () => {
-    }
+    const handleOnPressExplore = () => navigation.navigate('CountryByCurrency');
+    const handleOnPressCustomCountries = () => navigation.navigate('CustomCountryList');
 
     return (
         <View style={styles.parent}>
