@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
         paddingVertical: 20,
         borderWidth: 1,
         flexDirection: 'row',
+        borderRadius: 5,
         borderColor: Colors.LIGHT_GRAY,
     },
     countryText: {

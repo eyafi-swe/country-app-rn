@@ -21,14 +21,14 @@ const CustomCountryList: FC<CustomCountryListProps> = ({ navigation }) => {
 
     const navigateToGeneralInfo = () => navigation.navigate('GeneralInfo');
 
-    const deleteCountry = (name: string) => {
-        dispatch(removeCountry(name));
+    const deleteCountry = (id: string) => {
+        dispatch(removeCountry(id));
     }
 
     const renderCountry = ({ item }: { item: CustomCountryItem }) => (
         <View style={styles.countryContainer}>
             <Text style={styles.countryText}>{item.name}</Text>
-            <TouchableOpacity onPress={() => deleteCountry(item.name)}>
+            <TouchableOpacity onPress={() => deleteCountry(item.id)}>
                 <DeleteIcon />
             </TouchableOpacity>
         </View>
@@ -39,7 +39,7 @@ const CustomCountryList: FC<CustomCountryListProps> = ({ navigation }) => {
             <Text style={styles.title}>Your Custom Countries</Text>
             <FlatList
                 data={countries}
-                keyExtractor={item => item.name}
+                keyExtractor={item => item.id}
                 renderItem={renderCountry}
                 style={styles.flatList}
             />

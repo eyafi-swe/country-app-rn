@@ -21,6 +21,7 @@ const Summary: FC<SummaryScreenProps> = ({ navigation }) => {
 
     const addCustomCountry = () => {
         const country: CustomCountryItem = {
+            id: Date.now().toString(),
             name: addableCountryName,
             latitude: addableCountryLat,
             longitude: addableCountryLng,

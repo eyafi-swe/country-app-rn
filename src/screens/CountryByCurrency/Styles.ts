@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '100%',
         padding: 20,
-        alignItems: 'center',
+        // alignItems: 'center',
         backgroundColor: Colors.CONTAINER_BG,
     },
     buttonMargin: {
@@ -30,6 +30,13 @@ const styles = StyleSheet.create({
     flatListStyle: {
         width: '100%',
         marginTop: 20
+    },
+    centerText: {
+        textAlign: 'center'
+    },
+    topButton: {
+        marginBottom: 20,
+        alignSelf: 'flex-start'
     }
 });
 
@@ -58,3 +65,18 @@ export const pickerSelectStyles = StyleSheet.create({
         paddingRight: 30, // to ensure the text is not obscured by the icon
     },
 });
+
+export const drawerStyles = {
+    drawer: {
+        shadowColor: '#000',
+        shadowOpacity: 0.3,
+        shadowRadius: 10,
+        backgroundColor: '#FFF',
+        borderTopRightRadius: 20,
+        borderBottomRightRadius: 20,
+    },
+    main: {
+        paddingLeft: 3,
+    },
+
+}
