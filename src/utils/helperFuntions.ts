@@ -7,6 +7,13 @@ export const getQueryParams = (url: string): { [key: string]: string } => {
         const [key, value] = pair.split('=');
         result[decodeURIComponent(key)] = decodeURIComponent(value || '');
     });
-    console.log('result', result);
     return result;
 };
+
+export const sortAscendingOrDescending = (data: any[], sortType: string) => {
+    if (sortType === 'Ascending') {
+        return data.sort((a, b) => a.name.localeCompare(b.name));
+    } else {
+        return data.sort((a, b) => b.name.localeCompare(a.name));
+    }
+}

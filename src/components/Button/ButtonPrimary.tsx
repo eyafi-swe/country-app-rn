@@ -3,18 +3,20 @@ import { Pressable, StyleProp, StyleSheet, Text, ViewStyle } from 'react-native'
 import Colors from '../../constants/Colors';
 
 interface ButtonPrimaryProps {
-    title: string
-    onPress: () => void
+    title: string;
+    onPress: () => void;
+    disabled?: boolean;
     style?: StyleProp<ViewStyle>
 }
 
 const ButtonPrimary: FC<ButtonPrimaryProps> = ({
     title,
     onPress,
+    disabled,
     style
 }) => {
     return (
-        <Pressable onPress={onPress} style={[styles.buttonParent, style]}>
+        <Pressable onPress={onPress} style={[styles.buttonParent, style]} disabled={disabled}>
             <Text style={styles.buttonText}>{title}</Text>
         </Pressable>
     );

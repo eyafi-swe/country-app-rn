@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import { Text, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { addCountry, clearAddableCountryStates } from '../../redux/slices/customCountrySlice';
+import { RootState } from '../../redux/store';
 import { ButtonPrimary } from '../../components';
 import { HomeStackParamList } from '../../types/stackTypes';
-import styles from './Styles';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../redux/store';
 import { CustomCountryItem } from '../../types';
-import { addCountry, clearAddableCountryStates } from '../../redux/slices/customCountrySlice';
+import styles from './Styles';
 
 type SummaryScreenNavigationProp = NativeStackNavigationProp<HomeStackParamList, 'Summary'>;
 

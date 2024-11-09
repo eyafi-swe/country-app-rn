@@ -1,13 +1,13 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { FlatList, Text, TouchableOpacity, View } from 'react-native';
-import styles from './Styles';
-import { DeleteIcon, FloatingPlusButton } from '../../components';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { HomeStackParamList } from '../../types/stackTypes';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../redux/store';
-import { CustomCountryItem } from '../../types';
 import { removeCountry } from '../../redux/slices/customCountrySlice';
+import { RootState } from '../../redux/store';
+import { ButtonPrimary, DeleteIcon, FloatingPlusButton } from '../../components';
+import { HomeStackParamList } from '../../types/stackTypes';
+import { CustomCountryItem } from '../../types';
+import styles from './Styles';
 
 type CustomCountryListScreenNavigationProp = NativeStackNavigationProp<HomeStackParamList, 'CustomCountryList'>;
 
@@ -24,6 +24,8 @@ const CustomCountryList: FC<CustomCountryListProps> = ({ navigation }) => {
     const deleteCountry = (id: string) => {
         dispatch(removeCountry(id));
     }
+
+    const navigateToDashboard = () => navigation.navigate('Dashboard');
 
     const renderCountry = ({ item }: { item: CustomCountryItem }) => (
         <View style={styles.countryContainer}>
@@ -43,6 +45,7 @@ const CustomCountryList: FC<CustomCountryListProps> = ({ navigation }) => {
                 renderItem={renderCountry}
                 style={styles.flatList}
             />
+            <ButtonPrimary title='Go Dashboard' onPress={navigateToDashboard} style={styles.bottomButton} />
             <FloatingPlusButton onPress={navigateToGeneralInfo} />
         </View>
     );

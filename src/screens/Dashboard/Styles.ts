@@ -16,6 +16,11 @@ const styles = StyleSheet.create({
     },
     buttonMargin: {
         marginTop: 20,
+    },
+    logoutButton: {
+        marginTop: 30,
+        backgroundColor: Colors.RED_HOVER,
+        alignSelf: 'center',
     }
 });
 

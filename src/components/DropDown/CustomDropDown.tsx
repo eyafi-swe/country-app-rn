@@ -27,7 +27,7 @@ const CustomDropDown: FC<CustomDropDownProps> = ({
 
     return (
         <View style={styles.container}>
-            {label && <Text style={styles.label}>Sort Order</Text>}
+            {label && <Text style={styles.label}>{label}</Text>}
             <TouchableOpacity style={styles.dropdown} onPress={toggleDropdown}>
                 <Text style={styles.selectedText}>{selected}</Text>
                 <Text style={styles.icon}>{visibility ? '▲' : '▼'}</Text>

@@ -1,20 +1,24 @@
 import React, { FC } from 'react';
-import { StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
+import { StyleProp, StyleSheet, Text, TouchableOpacity, ViewStyle } from 'react-native';
 import Colors from '../../constants/Colors';
 
 interface CardPrimaryProps {
-    text: string;
+    name: string;
+    code: string;
+    onPress: (name: string, code: string) => void;
     style?: StyleProp<ViewStyle>
 }
 
 const CardPrimary: FC<CardPrimaryProps> = ({
-    text,
+    name,
+    code,
+    onPress,
     style
 }) => {
     return (
-        <View style={[styles.parent, style]}>
-            <Text style={styles.text}>{text}</Text>
-        </View>
+        <TouchableOpacity style={[styles.parent, style]} onPress={() => onPress(name, code)}>
+            <Text style={styles.text}>{name}</Text>
+        </TouchableOpacity>
     );
 };
 

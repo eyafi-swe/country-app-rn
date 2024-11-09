@@ -10,13 +10,19 @@ const useFetch = (url: string | null, trigger: boolean, param: {}) => {
     const [error, setError] = useState(null);
     const prevParamRef = useRef<string>(JSON.stringify(param));
 
+    const isPreviousParam = () => {
+        const paramStr = JSON.stringify(param);
+        if (paramStr !== prevParamRef.current) return false;
+        return true;
+    }
 
     useEffect(() => {
         if (!url || !trigger) return;
         const fetchData = async () => {
             setLoading(true);
             try {
-                const params = paramData ? paramData : { ...param, limit: 10 };
+                const params = !isPreviousParam() ? param : paramData ? paramData : param;
+                console.log('params', params);
                 const response = await api.geoApi.getData(url, params) as any;
                 console.log('response', response);
                 if (response?.links) {
@@ -31,14 +37,14 @@ const useFetch = (url: string | null, trigger: boolean, param: {}) => {
                     }
                 }
                 const paramStr = JSON.stringify(param);
-                if (paramStr !== prevParamRef.current) {
+                if (!isPreviousParam()) {
                     setData(response.data);
                     prevParamRef.current = paramStr;
                 } else {
                     setData((prevData) => [...prevData, ...response.data]);
                 }
             } catch (error: any) {
-                console.log('error', error);
+                console.log('error', error.response.data);
                 setError(error);
             } finally {
                 setLoading(false);

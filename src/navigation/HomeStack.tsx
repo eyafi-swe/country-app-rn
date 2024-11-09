@@ -8,6 +8,8 @@ import GeneralInfo from '../screens/AddCustomCountry/GeneralInfo';
 import Coordinates from '../screens/AddCustomCountry/Coordinates';
 import Population from '../screens/AddCustomCountry/Population';
 import Summary from '../screens/AddCustomCountry/Summary';
+import RegionsByCountry from '../screens/RegionsByCountry/RegionsByCountry';
+import CitiesByRegion from '../screens/CitiesByRegions/CitiesByRegions';
 
 const Stack = createNativeStackNavigator<HomeStackParamList>();
 
@@ -21,6 +23,8 @@ const HomeStack = () => {
         >
             <Stack.Screen name="Dashboard" component={Dashboard} />
             <Stack.Screen name="CountryByCurrency" component={CountryByCurrency} />
+            <Stack.Screen name="RegionsByCountry" component={RegionsByCountry} />
+            <Stack.Screen name="CitiesByRegion" component={CitiesByRegion} />
             <Stack.Screen name="CustomCountryList" component={CustomCountryList} />
             <Stack.Screen name="GeneralInfo" component={GeneralInfo} />
             <Stack.Screen name="Coordinates" component={Coordinates} />

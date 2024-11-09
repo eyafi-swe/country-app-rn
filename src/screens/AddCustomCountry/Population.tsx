@@ -1,12 +1,12 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { Text, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { setAddableCountryPopulation } from '../../redux/slices/customCountrySlice';
+import { RootState } from '../../redux/store';
 import { ButtonPrimary, TextInput } from '../../components';
 import { HomeStackParamList } from '../../types/stackTypes';
 import styles from './Styles';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../redux/store';
-import { setAddableCountryPopulation } from '../../redux/slices/customCountrySlice';
 
 type PopulationScreenNavigationProp = NativeStackNavigationProp<HomeStackParamList, 'Population'>;
 
@@ -15,7 +15,6 @@ interface PopulationScreenProps {
 }
 
 const Population: FC<PopulationScreenProps> = ({ navigation }) => {
-    const [population, setPopulation] = useState<string>('');
     const { addableCountryPopulation } = useSelector((state: RootState) => state.customCountry);
     const dispatch = useDispatch();
 

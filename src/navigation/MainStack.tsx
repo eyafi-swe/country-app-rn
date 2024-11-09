@@ -3,11 +3,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Login from '../screens/Auth/Login';
 import Register from '../screens/Auth/Register';
 import HomeStack from './HomeStack';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/store';
+import { MainStackParamList } from '../types/stackTypes';
 
-const Stack = createNativeStackNavigator()
+const Stack = createNativeStackNavigator<MainStackParamList>();
 
 const MainStack = () => {
-    const user = true;
+    const { isLoggedIn } = useSelector((state: RootState) => state.auth);
+
     return (
         <Stack.Navigator
             initialRouteName="Login"
@@ -16,7 +20,7 @@ const MainStack = () => {
             }}
         >
 
-            {user ? <Stack.Screen name="HomeStack" component={HomeStack} />
+            {isLoggedIn ? <Stack.Screen name="HomeStack" component={HomeStack} />
                 :
                 <>
                     <Stack.Screen name="Login" component={Login} />

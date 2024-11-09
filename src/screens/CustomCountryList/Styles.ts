@@ -33,6 +33,9 @@ const styles = StyleSheet.create({
         fontSize: 18,
         width: '90%',
     },
+    bottomButton: {
+        alignSelf: 'flex-start',
+    },
 
 });
 

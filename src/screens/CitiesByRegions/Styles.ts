@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     middleSection: {
-        marginTop: 20,
+        marginTop: 26,
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -32,7 +32,13 @@ const styles = StyleSheet.create({
         marginTop: 20
     },
     centerText: {
+        fontSize: 18,
         textAlign: 'center'
+    },
+    regionsText: {
+        textAlign: 'center',
+        fontSize: 18,
+        marginTop: 16,
     },
     topButton: {
         marginBottom: 20,
@@ -41,30 +47,6 @@ const styles = StyleSheet.create({
 });
 
 export default styles;
-
-export const pickerSelectStyles = StyleSheet.create({
-    inputIOS: {
-        fontSize: 16,
-        paddingVertical: 12,
-        paddingHorizontal: 10,
-        borderWidth: 1,
-        borderColor: 'gray',
-        borderRadius: 4,
-        color: 'black',
-        paddingRight: 30,
-    },
-    inputAndroid: {
-        marginTop: 10,
-        backgroundColor: Colors.END_BG,
-        fontSize: 20,
-        paddingHorizontal: 10,
-        borderWidth: 1,
-        borderColor: Colors.BLACK,
-        borderRadius: 8,
-        color: 'black',
-        paddingRight: 30,
-    },
-});
 
 export const drawerStyles = {
     drawer: {

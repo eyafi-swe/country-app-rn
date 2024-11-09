@@ -1,6 +1,7 @@
-import * as React from "react"
-import Svg, { SvgProps, G, Path } from "react-native-svg"
-import Colors from "../../constants/Colors"
+import * as React from "react";
+import Svg, { SvgProps, G, Path } from "react-native-svg";
+import Colors from "../../constants/Colors";
+
 const DeleteIcon = (props: SvgProps) => (
     <Svg
         width="24"
