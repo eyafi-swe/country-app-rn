@@ -28,7 +28,7 @@ const customCountrySlice = createSlice({
             state.countries = state.countries.filter((country) => country.id !== action.payload);
         },
         editCountry(state, action: PayloadAction<CustomCountryItem>) {
-            const index = state.countries.findIndex((country) => country.name === action.payload.name);
+            const index = state.countries.findIndex((country) => country.id === action.payload.id);
             state.countries[index] = action.payload;
         },
         setAddableCountryName(state, action: PayloadAction<string>) {

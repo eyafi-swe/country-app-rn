@@ -27,13 +27,20 @@ const CustomCountryList: FC<CustomCountryListProps> = ({ navigation }) => {
 
     const navigateToDashboard = () => navigation.navigate('Dashboard');
 
+    const navigateToEditCountry = (country: CustomCountryItem) => {
+        navigation.navigate('EditCustomCountry', country);
+    }
+
     const renderCountry = ({ item }: { item: CustomCountryItem }) => (
-        <View style={styles.countryContainer}>
+        <TouchableOpacity
+            onPress={() => navigateToEditCountry(item)}
+            style={styles.countryContainer}
+        >
             <Text style={styles.countryText}>{item.name}</Text>
             <TouchableOpacity onPress={() => deleteCountry(item.id)}>
                 <DeleteIcon />
             </TouchableOpacity>
-        </View>
+        </TouchableOpacity>
     );
 
     return (
